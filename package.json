@@ -10,21 +10,29 @@
     "test": "node --test tests/*.test.mjs",
     "test:browser": "node tests/browser.mjs",
     "export:ontology": "node scripts/export-ontology.mjs",
-    "prebuild": "npm run export:ontology",
+    "prebuild": "npm run lexicon:build && npm run export:ontology",
     "test:ledger": "node tests/ledger.mjs",
-    "test:assignments": "node tests/assignments.mjs"
+    "test:assignments": "node tests/assignments.mjs",
+    "lexicon:build": "node scripts/build-lexicon.mjs",
+    "predev": "npm run lexicon:build",
+    "pretest": "npm run lexicon:build",
+    "test:writing": "node tests/writing-tools.mjs"
   },
   "dependencies": {
     "@fontsource/bodoni-moda-sc": "^5.3.0",
     "@fontsource/old-standard-tt": "^5.3.0",
     "lucide-react": "^0.468.0",
+    "nspell": "^2.1.5",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "syllable": "^5.0.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.0",
     "@playwright/test": "^1.56.0",
     "@vitejs/plugin-react": "^5.1.0",
-    "vite": "^7.2.0"
+    "dictionary-en": "^4.0.0",
+    "vite": "^7.2.0",
+    "wordnet-db": "^3.1.14"
   }
 }

@@ -1,6 +1,6 @@
 # Commonplace
 
-AP English Language lessons, practice, and projects.
+AP English Language lessons, practice, projects, and writing tools.
 
 81 concepts. 9 units.
 

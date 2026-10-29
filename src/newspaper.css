@@ -1,0 +1,36 @@
+/* Ink, newsprint, rules, and letterpress hierarchy. No colored category fills. */
+:root { --ink:#242321; --muted:#58554e; --line:#b7afa1; --paper:#fcfaf5; --blue:#242321; --green:#3d3b36; background:#f5f1e8; }
+body { background:#f5f1e8; }
+::selection { background:#d3ccbf; color:#242321; }
+.overview-page:before { display:none; }
+.brand,.course-title-block h1 em,.project-feature h2 { color:#242321; }
+.site-header { border-top:5px double #242321; }
+.navigation-band { background:#f5f1e8; border-top:1px solid #58554e; border-bottom:4px double #242321; }
+.nav-item { padding-inline:18px; color:#3d3b36; }
+.nav-item.active { color:#fcfaf5; background:#242321; }
+.nav-item.active .nav-index { color:#e8e2d6; }
+.nav-item.active:after { border-color:#b7afa1; }
+.nav-item:hover { color:#242321; background:#e8e2d6; }
+.button.dark { background:#242321; outline-color:#242321; border-color:#e8e2d6; color:#fcfaf5; }
+.button.dark:hover { background:#3d3b36; }
+.opening-map,.project-feature,.project-hero,.project-library-card,.reading-strip,.topic-suggestions { background:#fcfaf5; border-color:#777268; box-shadow:3px 3px 0 #d3ccbf; }
+.project-feature { border-color:#3d3b36; }
+.project-hero,.topic-suggestions { border-width:4px; border-style:double; }
+.project-feature p,.project-feature .eyebrow,.feature-link,.folio { color:#3d3b36; }
+.tag { border:1px solid #928b7f; }
+.answer-option.correct { border:2px solid #3d3b36; }
+.answer-option.incorrect { border:2px dashed #58554e; }
+.answer-option .option-letter { color:#242321; border-color:#928b7f; background:#fcfaf5; border-radius:0; }
+.question-index button.active { background:#242321; color:#fcfaf5; }
+.question-index button.answered:not(.active) { background:#d3ccbf; }
+.skill-status input { accent-color:#242321; }
+.project-rubric-row h4 { font-variant:small-caps; letter-spacing:.4px; }
+.topic-suggestions h3,.project-brief h3 { font-variant:small-caps; }
+.source-grid,.project-grid { gap:22px; }
+.source-card,.project-library-card { border-radius:0; }
+.primary-nav { flex-wrap:wrap; }
+.draft-footer { flex-wrap:wrap; gap:12px; }
+.draft-footer a { display:inline-flex; align-items:center; gap:6px; text-decoration:underline; text-underline-offset:3px; color:#3d3b36; }
+@media(max-width:700px) { .nav-item { padding-inline:12px; } }
+.atlas-art { opacity:1; }
+.atlas-art>span,.atlas-art>span:nth-child(2),.atlas-art>span:nth-child(3) { color:#3d3b36; border-color:#777268; }

@@ -1,0 +1,51 @@
+import {chromium,expect} from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
+await mkdir('test-results',{recursive:true});
+const browser=await chromium.launch();const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});const page=await context.newPage();
+const base=process.env.TEST_URL||'http://127.0.0.1:4175/';const errors=[],requests=[],reports=[];
+page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>requests.push(r.url()));
+const editor=page.getByRole('textbox',{name:'Manuscript text',exact:true});
+const ready=()=>expect(page.locator('.desk-status')).not.toContainText('Reviewing your text');
+const checkAxe=async name=>{const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();reports.push({name,violations:result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))});};
+try{
+ await page.goto(base+'#/tools/writing');await expect(page.getByRole('heading',{name:'Writing tools',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Load sample',exact:true}).click();await ready();await expect(page.locator('.revision-note')).toHaveCount(8);
+ const original=await editor.inputValue();await page.getByRole('button',{name:'Replace The the with The',exact:true}).click();await expect(editor).toHaveValue(original.replace('The the','The'));
+ await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(editor).toHaveValue(original);await page.getByRole('button',{name:'Redo',exact:true}).click();await ready();
+ await page.getByRole('button',{name:'Replace recieve with receive',exact:true}).click();await expect(editor).toHaveValue(original.replace('The the','The').replace('recieve','receive'));await ready();
+ const corrected=await editor.inputValue();
+ await page.getByRole('button',{name:'Annotated view',exact:true}).click();await expect(page.locator('.annotated-text')).toHaveText(corrected);await expect(page.locator('.annotation')).not.toHaveCount(0);await checkAxe('annotated writing');
+ await page.getByRole('button',{name:'Edit text',exact:true}).click();
+ await page.getByLabel('Show',{exact:true}).selectOption('grammar');const count=await page.locator('.revision-note').count();await page.locator('.revision-note').first().getByRole('button',{name:'Dismiss',exact:true}).click();await expect(page.locator('.revision-note')).toHaveCount(count-1);await page.getByRole('button',{name:/Restore dismissed/}).click();await expect(page.locator('.revision-note')).toHaveCount(count);
+ await page.locator('.revision-note').first().getByRole('button',{name:'Locate',exact:true}).click();await expect.poll(()=>editor.evaluate(el=>el.selectionEnd>el.selectionStart)).toBe(true);
+ await editor.fill('The argument is clear. A codexword is a made-up term.');await ready();await page.getByLabel('Show',{exact:true}).selectOption('spelling');
+ const spelling=page.locator('.revision-note').filter({hasText:'codexword'});await spelling.getByRole('button',{name:'Add to dictionary',exact:true}).click();await ready();await expect(page.locator('.revision-note').filter({hasText:'codexword'})).toHaveCount(0);
+ await page.getByText('Personal dictionary (1)',{exact:true}).click();await page.getByRole('button',{name:'Remove codexword from personal dictionary',exact:true}).click();await ready();await expect(page.locator('.revision-note').filter({hasText:'codexword'})).toHaveCount(1);
+ await editor.fill('The argument is clear.');await ready();await editor.focus();await editor.press('End');await editor.press('ArrowLeft');for(let i=0;i<5;i++)await editor.press('Shift+ArrowLeft');
+ await expect(page.getByRole('button',{name:'Look up selection',exact:true})).toBeEnabled();await page.getByRole('button',{name:'Look up selection',exact:true}).click();await expect(page.locator('.dictionary-result-title h2')).toHaveText('clear');
+ const replacement=page.locator('.synonyms button').first(),replacementText=await replacement.innerText();await replacement.click();await expect(editor).toHaveValue(`The argument is ${replacementText}.`);
+ await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(editor).toHaveValue('The argument is clear.');
+ await editor.fill('Scratch text stays here.');await page.reload();await expect(editor).toHaveValue('Scratch text stays here.');
+ await page.goto(base+'#/concept/rhetorical-situation/practice');const essay=page.locator('#rhetorical-situation-essay');await essay.fill('My saved essay has a honest claim.');await page.locator('.draft').filter({has:essay}).getByRole('link',{name:'Review writing',exact:true}).click();await expect(editor).toHaveValue('My saved essay has a honest claim.');await ready();await page.getByRole('button',{name:'Replace a with an',exact:true}).click();await page.getByRole('link',{name:/Return to assignment/}).click();await expect(essay).toHaveValue('My saved essay has an honest claim.');
+ await page.locator('.draft').filter({has:essay}).getByRole('link',{name:'Review writing',exact:true}).click();await page.getByLabel('Document',{exact:true}).selectOption('writing-desk');await expect(editor).toHaveValue('Scratch text stays here.');
+ const download=page.waitForEvent('download');await page.getByRole('button',{name:'Export text',exact:true}).click();await(await download).saveAs('test-results/writing-desk.txt');expect(await readFile('test-results/writing-desk.txt','utf8')).toBe('Scratch text stays here.');
+ await page.goto(base+'#/notebook');await page.getByRole('button',{name:'Drafts & notes',exact:true}).click();await expect(page.locator('.draft-list-item').filter({hasText:'Free draft'})).toHaveCount(1);await page.locator('.draft-list-item').filter({hasText:'Free draft'}).click();await expect(editor).toHaveValue('Scratch text stays here.');
+ await editor.fill(original);await ready();await page.getByRole('button',{name:'Annotated view',exact:true}).click();
+ for(const width of [1440,768,390,320]){await page.setViewportSize({width,height:1000});expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),`writing overflow ${width}`).toBe(false);await checkAxe(`writing ${width}`);await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:`test-results/writing-${width}.png`,fullPage:true});}
+ await page.getByRole('link',{name:'Thesaurus',exact:true}).click();await page.getByRole('textbox',{name:'Word or phrase',exact:true}).fill('deliberate');await page.getByRole('button',{name:'Look up',exact:true}).click();await expect(page.locator('.dictionary-result-title h2')).toHaveText('deliberate');
+ await page.getByLabel('Part of speech',{exact:true}).selectOption('verb');expect(await page.locator('.sense-part').allTextContents()).toEqual(['verb','verb']);await page.getByLabel('Part of speech',{exact:true}).selectOption('all');
+ for(const width of [1440,390,320]){await page.setViewportSize({width,height:1000});expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),`thesaurus overflow ${width}`).toBe(false);await checkAxe(`thesaurus ${width}`);await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:`test-results/thesaurus-${width}.png`,fullPage:true});}
+ await page.getByRole('textbox',{name:'Word or phrase',exact:true}).fill('zznotawordzz');await page.getByRole('button',{name:'Look up',exact:true}).click();await expect(page.locator('.dictionary-status')).toContainText('No alternatives found');
+ await page.getByRole('textbox',{name:'Word or phrase',exact:true}).fill('<bad>');await page.getByRole('button',{name:'Look up',exact:true}).click();await expect(page.locator('.dictionary-status')).toContainText('Enter an English word');
+ // A failed asset can be retried; no external service receives the query or draft.
+ await page.route('**/lexicon/me.json',route=>route.fulfill({status:503,body:'Unavailable'}));await page.getByRole('textbox',{name:'Word or phrase',exact:true}).fill('meaning');await page.getByRole('button',{name:'Look up',exact:true}).click();await expect(page.locator('.dictionary-status')).toContainText('could not load');await page.unroute('**/lexicon/me.json');await page.getByRole('button',{name:'Look up',exact:true}).click();await expect(page.locator('.dictionary-result-title h2')).toHaveText('meaning');
+ await page.goto(base+'#/tools/writing/bogus');await expect(page.getByText('This document could not be found. Your saved drafts are unchanged.')).toBeVisible();
+ // Spelling failures leave grammar and writing available and can recover.
+ await page.route('**/lexicon/en.dic',route=>route.fulfill({status:503,body:'Unavailable'}));await page.goto(base+'#/tools/writing');await ready();await expect(page.getByText('The spelling dictionary could not load.',{exact:false})).toBeVisible();await expect(editor).toHaveValue(original);await page.unroute('**/lexicon/en.dic');await page.getByRole('button',{name:'Retry dictionary',exact:true}).click();await ready();await expect(page.getByRole('button',{name:'Retry dictionary',exact:true})).toHaveCount(0);await expect(page.locator('.revision-note.spelling')).not.toHaveCount(0);
+ // Oversize input remains saved without truncation; new analysis does not overwrite it.
+ const long='word '.repeat(20001);await editor.fill(long);await ready();await expect(page.locator('.desk-status')).toContainText('100,000 characters');await expect(editor).toHaveValue(long);await editor.fill('A final saved draft.');await ready();await page.reload();await expect(editor).toHaveValue('A final saved draft.');
+ expect(requests.filter(url=>url.startsWith('http')&&!url.startsWith(new URL(base).origin))).toEqual([]);expect(errors).toEqual([]);
+ await writeFile('test-results/writing-accessibility.json',JSON.stringify(reports,null,2));expect(reports.flatMap(r=>r.violations)).toEqual([]);
+ console.log('Writing tools passed: real worker analysis, corrections, undo/redo, annotations, dictionary, selected synonyms, saved-draft round trip, exports, recovery, privacy, 320–1440px layouts and accessibility.');
+}finally{await writeFile('test-results/writing-accessibility.json',JSON.stringify(reports,null,2));await browser.close();}

@@ -21,10 +21,10 @@ export const sources = [
 ];
 
 export const domains = [
-  {id:'situation', title:'Rhetorical situation', color:'#e8dff0', ink:'#665374', short:'Situation'},
-  {id:'evidence', title:'Claims & evidence', color:'#e1ead6', ink:'#466043', short:'Evidence'},
-  {id:'reasoning', title:'Reasoning & organization', color:'#f5e6cd', ink:'#785c2b', short:'Reasoning'},
-  {id:'style', title:'Style', color:'#dde9f0', ink:'#3d6277', short:'Style'},
+  {id:'situation', title:'Rhetorical situation', color:'#f5f1e8', ink:'#242321', short:'Situation'},
+  {id:'evidence', title:'Claims & evidence', color:'#e8e2d6', ink:'#242321', short:'Evidence'},
+  {id:'reasoning', title:'Reasoning & organization', color:'#d3ccbf', ink:'#242321', short:'Reasoning'},
+  {id:'style', title:'Style', color:'#b7afa1', ink:'#242321', short:'Style'},
 ];
 
 // Concise editorial labels; the codes are College Board's, the descriptions are ours.

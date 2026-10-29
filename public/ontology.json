@@ -16222,29 +16222,29 @@
     {
       "id": "situation",
       "title": "Rhetorical situation",
-      "color": "#e8dff0",
-      "ink": "#665374",
+      "color": "#f5f1e8",
+      "ink": "#242321",
       "short": "Situation"
     },
     {
       "id": "evidence",
       "title": "Claims & evidence",
-      "color": "#e1ead6",
-      "ink": "#466043",
+      "color": "#e8e2d6",
+      "ink": "#242321",
       "short": "Evidence"
     },
     {
       "id": "reasoning",
       "title": "Reasoning & organization",
-      "color": "#f5e6cd",
-      "ink": "#785c2b",
+      "color": "#d3ccbf",
+      "ink": "#242321",
       "short": "Reasoning"
     },
     {
       "id": "style",
       "title": "Style",
-      "color": "#dde9f0",
-      "ink": "#3d6277",
+      "color": "#b7afa1",
+      "ink": "#242321",
       "short": "Style"
     }
   ],
