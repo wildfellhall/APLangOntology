@@ -1,6 +1,6 @@
 # AP Language patterns and evidence
 
-Reviewed October 28, 2026. These are design inferences from the sources below, not quotations from official materials.
+Reviewed October 29, 2026. These are design inferences from the sources below, not quotations from official materials.
 
 ## Reading and writing items
 
@@ -41,3 +41,5 @@ The supplied Rhetorical Atlas example inspired this integration. Adaptations mad
 - Vanderbilt Writing Studio, inference problems: https://www.vanderbilt.edu/writing/resources/handouts/illogical-arguments/
 - Missouri S&T, synthesis: https://writingcenter.mst.edu/resources/literaturereviews/synthesis/
 - UIC, cognitive objectives: https://teaching.uic.edu/blooms-taxonomy-of-educational-objectives/
+
+For bank construction and quality review, use [mcq-construction.md](mcq-construction.md). For themed assignments and project-specific scoring, use [project-studio.md](project-studio.md).

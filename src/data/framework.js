@@ -1,4 +1,5 @@
 export const sources = [
+  {id:'rubric-design',type:'Teaching & learning',title:'Grading and performance rubrics',publisher:'Carnegie Mellon Eberly Center',url:'https://www.cmu.edu/teaching/designteach/teach/rubrics.html',note:'Analytic criteria with explicit performance levels; the project-specific rubrics here are original classroom tools.'},
   {id:'kairos', type:'Writing & rhetoric', title:'Rhetorical situation and kairos', publisher:'Purdue OWL', url:'https://owl.purdue.edu/owl/general_writing/academic_writing/rhetorical_situation/aristotles_rhetorical_situation.html', note:'The relationships among setting, purpose, audience, and rhetorical choices.'},
   {id:'genre', type:'Writing & rhetoric', title:'Genre and reader expectations', publisher:'Writing Commons', url:'https://writingcommons.org/section/genre/', note:'Genre as a social practice shaped by recurring purposes and expectations.'},
   {id:'stasis', type:'Writing & rhetoric', title:'Stasis theory', publisher:'Purdue OWL', url:'https://owl.purdue.edu/owl/general_writing/the_writing_process/stasis_theory/index.html', note:'Questions about fact, definition, evaluation, and policy help locate the issue in dispute.'},
@@ -76,5 +77,5 @@ export function project(title,brief,composition,visual,analysis,argument,reflect
   return {title,brief,composition,visual,analysis,argument,reflection};
 }
 
-export const practiceNotice = 'Original AP-style practice. Short MCQ sets isolate a skill; they are not released questions or a calibrated exam. All invented passages, people, and data are labeled.';
+export const practiceNotice = 'Original AP-style practice. Ten-question MCQ sets practice official skills; they are not released questions or a calibrated exam. All invented passages, people, and data are labeled.';
 export const checkedDate = 'October 29, 2026';

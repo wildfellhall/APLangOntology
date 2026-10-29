@@ -2,6 +2,9 @@ import u1 from './unit1.js'; import u2 from './unit2.js'; import u3 from './unit
 import u4 from './unit4.js'; import u5 from './unit5.js'; import u6 from './unit6.js';
 import u7 from './unit7.js'; import u8 from './unit8.js'; import u9 from './unit9.js';
 import extensions from './extensions.js';
+import {projectByConcept} from './projects/index.js';
+export * from './mcq/index.js';
+export {rubricScoring} from './projects/index.js';
 export * from './framework.js';
 export * from './passages.js';
 
@@ -23,7 +26,7 @@ export const concepts = [...originalNodes,...extensions].sort((a,b)=>a.unit-b.un
     practice[kind]={...question,options:order.map(i=>question.options[i]),rationales:order.map(i=>question.rationales[i]),correct:order.indexOf(0),kind:kind==='read'?'Reading':'Writing & revision',id:`${node.id}-${kind}`};
   }
   unitCounts[node.unit]=(unitCounts[node.unit]||0)+1;
-  return {...node,practice,skills:[...new Set([...node.skills,practice.read.skill,practice.write.skill])].sort(),index,indexInUnit:unitCounts[node.unit],sources:[...new Set(['ced',...externalByDomain[node.domain],...(additionalSources[node.id]||[])])]};
+  return {...node,project:projectByConcept[node.id],practice,skills:[...new Set([...node.skills,practice.read.skill,practice.write.skill])].sort(),index,indexInUnit:unitCounts[node.unit],sources:[...new Set(['ced',...externalByDomain[node.domain],...(additionalSources[node.id]||[])])]};
 });
 export const conceptById=Object.fromEntries(concepts.map(n=>[n.id,n]));
 const transfers=[
@@ -68,11 +71,4 @@ export const frqPrompt=node=>node.frq.type==='analysis'
   ? `Read all six sources and their introductory notes. ${node.frq.prompt} Build your own argument using material from at least three sources, identify each source you use, and explain how the evidence supports your reasoning.`
   : `${node.frq.prompt} Support your position with specific evidence and explain how that evidence develops your reasoning.`;
 
-export const projectStages = node=>[
-  {level:'Remember · Understand',title:'Frame the inquiry',text:`Define ${node.title.toLowerCase()} in your own words. Identify the audience, purpose, and a real disagreement in this project. Record two questions that cannot be answered by definition alone.`},
-  {level:'Apply · Create',title:'Compose the perspectives',text:`${node.project.composition} Unless a length is specified above, aim for 450–600 words per substantial text; for three or more perspectives, 350–500 words per perspective is sufficient. Keep opening variants, notices, and visual labels as concise as their function requires. Distinguish invented scenarios from factual claims, and support factual claims with traceable sources.`},
-  {level:'Create · Analyze',title:'Build the visual argument',text:`${node.project.visual} Include an accessible text description. Explain how at least three visual decisions carry meaning; artistic technique itself is not the basis of the grade.`},
-  {level:'Analyze',title:'Write the rhetorical commentary',text:`${node.project.analysis} Unless otherwise specified, write 500–700 words with at least six quoted or precisely described choices. Link each choice to its mechanism, a plausible audience response, and your purpose.`},
-  {level:'Evaluate',title:'Argue, test & revise',text:`${node.project.argument} Unless otherwise specified, write a 500–700 word position essay. Invite a peer to identify the strongest objection, or conduct a two-pass self-review. Make two substantive revisions and preserve before-and-after excerpts with explanations.`},
-  {level:'Evaluate · Transfer',title:'Reflect',text:`Respond in 150–200 words to each question: (1) ${node.project.reflection} (2) Which textual and visual choices reinforced or contradicted one another? Cite an example. (3) What would you change for a new audience, and what evidence would test whether that adaptation works?`},
-];
+export const projectStages = node=>node.project.stages;

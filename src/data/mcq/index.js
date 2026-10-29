@@ -1,0 +1,12 @@
+import situation from './situation.js'; import audienceWriting from './audience-writing.js';
+import claimsReading from './claims-reading.js'; import claimsWriting from './claims-writing.js';
+import reasoningReading from './reasoning-reading.js'; import reasoningWriting from './reasoning-writing.js';
+import styleReading from './style-reading.js'; import styleWriting from './style-writing.js';
+export {stimuli} from './stimuli.js';
+export const skillSets=[...situation,...audienceWriting,...claimsReading,...claimsWriting,...reasoningReading,...reasoningWriting,...styleReading,...styleWriting].sort((a,b)=>a.skill.localeCompare(b.skill));
+export const skillSetById=Object.fromEntries(skillSets.map(s=>[s.id,s]));
+export const questionBank=skillSets.flatMap(s=>s.questions);
+export const questionById=Object.fromEntries(questionBank.map(q=>[q.id,q]));
+export const setsForConcept=node=>node.skills.map(code=>skillSetById[code]);
+export const questionsForConcept=node=>setsForConcept(node).flatMap(s=>s.questions);
+export const bankNotice='220 original questions across 22 official skill sets; 10 questions per skill. Concept pages share relevant sets, so these are not 220 new questions for each concept. Answers carry across pages that use the same set. These are focused AP-style exercises, not released questions or a calibrated full-exam simulation.';

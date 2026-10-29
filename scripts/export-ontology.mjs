@@ -1,5 +1,5 @@
 import {writeFileSync} from 'node:fs';
-import {concepts,edges,units,domains,skills,sources,checkedDate} from '../src/data/index.js';
-const artifact={version:1,reviewed:checkedDate,scope:'Editorial AP Language concept ontology; original teaching materials, not an official College Board ontology.',concepts,edges,units,domains,skills,sources};
+import {concepts,edges,units,domains,skills,sources,checkedDate,questionBank,skillSets,stimuli,passages,synthesisPacket} from '../src/data/index.js';
+const artifact={version:2,reviewed:checkedDate,scope:'Editorial AP Language ontology; original teaching materials, not an official College Board ontology.',assessmentNotice:'220 original MCQs in 22 shared skill sets. Legacy two-item practice fields are retained for saved-answer compatibility; the active interface uses skillSets and questionBank.',concepts:concepts.map(n=>({...n,practiceSetIds:n.skills})),edges,units,domains,skills,sources,skillSets:skillSets.map(s=>({id:s.id,skill:s.skill,questionIds:s.questions.map(q=>q.id)})),questionBank,stimuli,passages,synthesisPacket};
 writeFileSync(new URL('../public/ontology.json',import.meta.url),JSON.stringify(artifact,null,2));
-console.log(`Exported ${concepts.length} concepts and ${edges.length} typed relationships.`);
+console.log(`Exported ${concepts.length} concepts, ${questionBank.length} MCQs, ${Object.keys(stimuli).length} MCQ stimuli, and ${edges.length} relationships.`);

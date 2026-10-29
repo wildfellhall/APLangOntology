@@ -4,49 +4,44 @@ Reviewed October 29, 2026.
 
 ## Content
 
-- 81 concepts across nine units; nine concepts per unit.
-- 162 original MCQs with four choices and explanations.
-- 81 essay assignments: 32 rhetorical analysis, 40 argument, nine synthesis.
-- 81 projects combining writing, visual composition, analysis, argument, revision, and reflection.
-- 198 typed graph connections; prerequisites are acyclic and precede dependent concepts.
-- All 22 College Board skill codes are represented.
-- Five complete original analysis passages. Nine synthesis assignments share one six-source simulated packet.
-- New references cover kairos, genre, stasis, source roles, and paraphrase. Links appear in the library.
+- 81 concepts across nine units, connected by 198 typed relationships.
+- 220 active original MCQs in 22 official-skill sets: 10 distinct questions per skill.
+- Concept pages link to their associated sets, providing 20–40 questions per concept. Sets and answers are shared; these are not separate banks of newly authored questions for every concept or every named device.
+- Five original reading passages and five numbered revision drafts support the MCQ bank. Each set uses five contexts. All simulated circumstances and figures are labeled.
+- 81 essay assignments: 32 rhetorical analysis, 40 argument, and nine synthesis. Five extended analysis passages and one six-source synthesis packet are reused across those assignments.
+- 81 rewritten projects with distinct inquiries, audiences, topic suggestions, detailed deliverables, visual reasoning, self-analysis, testing, revision, and reflection.
+- Every project has a 100-point analytic rubric. Its central concept and visual criterion are specific to the assignment; evidence, self-analysis, and revision criteria supply common expectations. Four scored performance levels and a missing-work level are explicit.
 
-The 18 new concepts have distinct passages, assessments, and projects. The new extended passage is “The notice at the gate.” Existing question IDs and answer orders remain stable so earlier saved responses retain their meaning. The supplied project is unchanged.
+Projects are alternatives, not 81 required submissions. Topic suggestions are subjects to investigate, not completed project examples. The supplied `AP Lang Project.md` remains unchanged.
 
-Five content test suites pass. These check completeness, skill alignment, graph integrity, saved-answer compatibility, stimulus requirements, and visual constraints. They do not measure instructional effectiveness or exam-equivalent difficulty.
+The earlier 162 short MCQs remain in the source data and ontology as legacy fields so saved answer positions retain their meaning. The active interface and its displayed counts use the new bank. New items have versioned, stable IDs and deterministic option order. No existing student drafts or saved responses are erased.
 
-## Browser
+## Assessment design
 
-The production build is tested locally at http://127.0.0.1:4175/ using Playwright and axe.
+The College Board CED's public reading and revision samples and current exam overview were checked. Reading questions now use sustained passage context; revision questions specify a purpose and operate on numbered drafts. Proposed revisions are independent of one another. Every option has an explanation. Reference checks corrected sentence-number drift; a length-cue review led to revisions of 27 items and more plausible alternatives.
 
-- All 243 concept-section routes render their own material.
-- Answer feedback, bookmarks, completion, drafts, search, filters, timers, and assignment downloads work.
-- Graph and list navigation work. The new bottom row scrolls into view when selected.
-- The exported ontology contains 81 concepts and 198 connections.
-- Saved work from the original library remains usable after expansion.
-- Overview, units, lesson, projects, workspace, and map layouts have no page overflow at 320, 390, 768, 1024, and 1440 pixels.
-- Mobile navigation supports Escape and selecting the current page.
-- axe reports zero WCAG A/AA violations in ten standard states plus new practice and project pages. No uncaught page errors were recorded.
-- Screenshots were reviewed on desktop and mobile.
+The reusable `ap-lang-assessment-design` skill now includes references for passage construction, distractor review, source-dependent reasoning, versioned answer storage, themed project design, and analytic rubrics. Both the repository copy and installed copy were updated and validated.
 
-Browser artifacts stay in ignored `test-results/`. Automated accessibility checks are not a complete assistive-technology audit.
+Original practice is not released College Board material. These focused sets are not a full-exam simulation or a calibrated measure of AP difficulty. Automated completeness and interface tests do not establish psychometric validity; student attempts and independent teacher review remain useful for refining difficulty and ambiguity.
 
-## Build
+## Checks
 
-`npm test` and `npm run build` pass. The build regenerates `public/ontology.json`. Fonts are self-hosted Old Standard TT and Bodoni Moda SC; license texts are included. Routing uses hashes and assets use relative paths.
+`npm test` runs ten content checks covering the original lessons and graph, legacy answer compatibility, 22-by-10 question coverage, source references, distinct project briefs, scoring totals, complete downloads, portable ontology references, and the prohibition on gradients.
 
-## Period design and argument ledger
+The production build is tested on `http://127.0.0.1:4175/` with Playwright and axe. Port 4173 belongs to another application and is left untouched.
 
-The interface uses a centered masthead, small capitals, original SVG printer’s ornaments, double rules, Roman unit numbers, framed concept plates, and ruled writing areas. [Old Standard TT](https://fontsource.org/fonts/old-standard-tt/about) draws on late nineteenth- and early twentieth-century book types; [Bodoni Moda SC](https://fontsource.org/fonts/bodoni-moda-sc/about) supplies display capitals. The README remains minimal.
+- `npm run test:browser`: all 243 concept-section routes, student workflows, responsive layouts, navigation, exports, and ten accessibility states.
+- `npm run test:assignments`: all 220 active MCQs rendered through 22 sets; question navigation; keyboard input; saved answers across concepts and direct skill pages; complete-set print behavior; downloads; rubric levels; 320–1440px layouts; expanded practice and project accessibility.
+- `npm run test:ledger`: planning-ledger persistence, task-specific prompts, workspace links, export, narrow layouts, and accessibility.
 
-The optional argument ledger is available in every essay assignment. Its four fields connect a claim to evidence, test an objection or alternative reading, and invite qualification. Prompts adapt to the essay task. Entries persist in the existing local workspace, reopen at the worksheet, and export as text. The ledger is a planning aid, not a prescribed essay structure or automatic scoring tool.
+Artifacts and screenshots remain in ignored `test-results/`. Automated accessibility checks are not a complete assistive-technology audit.
 
-The production browser suite again passed all 243 concept-section routes, standard student workflows, responsive layouts from 320 to 1440 pixels, and automated accessibility checks. `npm run test:ledger` separately checks persistence, task-specific prompts, workspace return links, export, narrow layouts, and accessibility with the ledger expanded. Desktop and mobile screenshots were inspected. No gradients or additional favicons were added.
+`npm run build` regenerates the version 2 ontology, including all active questions, their complete source texts, project rubrics, and essay packets. The content-rich JavaScript bundle triggers Vite's size advisory; the build succeeds.
 
-## Limits
+## Interface and storage
 
-Student work is stored in the browser, separately for each origin. There is no account synchronization, import interface, automatic essay grading, or AP-score prediction. Essay assignments reuse the supplied stimulus materials. Practice questions are original and are not released College Board items. Projects are alternatives, not a requirement to complete all 81.
+The nineteenth-century typography, centered masthead, printer's ornaments, double rules, Roman unit numbers, and pastel palette remain. Fonts are self-hosted [Old Standard TT](https://fontsource.org/fonts/old-standard-tt/about) and [Bodoni Moda SC](https://fontsource.org/fonts/bodoni-moda-sc/about), with licenses included. No gradients or additional favicons were added. The README remains minimal.
 
-GitHub work uses the GitHub CLI. Port 4173 belongs to another application and is left untouched.
+The practice library provides direct access to all 22 skill sets. Students can answer one item at a time or show a complete set, with a visible passage, progress, and answer explanations. The optional argument ledger remains available for every essay; it is a planning aid, not a required essay structure.
+
+Student work stays in browser storage, separately for each origin. There is no account synchronization, automatic essay grading, or AP-score prediction. GitHub operations use the GitHub CLI and git.

@@ -5,7 +5,7 @@ description: Design AP English Language and Composition practice, concept librar
 
 # AP Language assessment design
 
-Create original materials aligned to the actual task being practiced, not a device-identification worksheet labeled as an exam. Read [references/patterns.md](references/patterns.md) for prompt patterns, project design, and the verified source register. Recheck the official CED and current exam page before asserting current exam specifications. The reference review date is October 28, 2026.
+Create original materials aligned to the actual task being practiced, not a device-identification worksheet labeled as an exam. Read [references/patterns.md](references/patterns.md) for prompt patterns, project design, and the verified source register. Recheck the official CED and current exam page before asserting current exam specifications. The reference review date is October 29, 2026. For substantial question banks, read [references/mcq-construction.md](references/mcq-construction.md). For distinctive project briefs and rubrics, read [references/project-studio.md](references/project-studio.md).
 
 ## Design decisions
 
@@ -19,6 +19,8 @@ Create original materials aligned to the actual task being practiced, not a devi
 - Label short isolated items as focused practice. Exam-style structure is not evidence of calibrated exam difficulty. Distinguish extended original essays, paragraph scaffolds, and genuine exam simulations.
 
 ## Projects
+
+Give each project an inquiry, a consequential theme, topic suggestions rather than completed examples, explicit deliverables, and an analytic rubric tied to its central challenge. A new title does not make a repeated assignment distinct.
 
 Combine original composition, visual or spatial argument, rhetorical self-analysis, a supported position, revision, and reflection in one coherent inquiry. Give each concept its own meaningful dilemma and artifact. Explain why the visual medium matters. Use observable work across Bloom's cognitive categories without treating them as a mandatory one-way staircase.
 
