@@ -41,7 +41,7 @@ Artifacts and screenshots remain in ignored `test-results/`. Automated accessibi
 
 ## Interface and storage
 
-The nineteenth-century typography, centered masthead, printer's ornaments, double rules, Roman unit numbers, and ink-and-paper palette carry the newspaper aesthetic. The former colored pastel fills have been removed across the interface, graph, exported ontology, and favicon. Fonts are self-hosted [Old Standard TT](https://fontsource.org/fonts/old-standard-tt/about) and [Bodoni Moda SC](https://fontsource.org/fonts/bodoni-moda-sc/about), with licenses included. No gradients or additional favicons were added. The README remains minimal.
+The nineteenth-century typography, centered masthead, fine rules, Roman unit numbers, and ink-and-paper palette carry the newspaper aesthetic. The former colored pastel fills have been removed across the interface, graph, exported ontology, and favicon. Fonts are self-hosted [Old Standard TT](https://fontsource.org/fonts/old-standard-tt/about) and [Bodoni Moda SC](https://fontsource.org/fonts/bodoni-moda-sc/about), with licenses included. No gradients or additional favicons were added. The README remains minimal.
 
 The practice library provides direct access to all 22 skill sets. Students can answer one item at a time or show a complete set, with a visible passage, progress, and answer explanations. The optional argument ledger remains available for every essay; it is a planning aid, not a required essay structure.
 
@@ -56,3 +56,11 @@ The checker runs in a worker. It estimates Flesch–Kincaid grade and Flesch rea
 The thesaurus uses Princeton WordNet 3.1. Its 110,543 entries retain senses with at least one alternative, part of speech, definitions, and examples. Exact entries take precedence over inflection fallbacks. Synonym replacement is explicit and verifies the selected range before editing. All processing is local; dictionary assets load from the same site on demand. There are no external lookup or grammar APIs.
 
 `npm run lexicon:build` generates 553 lookup shards, spelling assets, and license notices from pinned lockfile dependencies. It runs before development, tests, and production builds. Generated lexicon assets are ignored by git and included in `dist` during builds. Their combined size is about 29 MB; the browser requests only the relevant shards. The writing interface is loaded separately from the course bundle. WordNet’s complete copyright and permission notice is embedded in every shard, with third-party licenses also available under `public/licenses/`. Delete `public/lexicon/manifest.json` and rebuild if generated assets need to be recreated.
+
+## Interface simplification
+
+The header has six primary destinations, with home on the wordmark and sources in the footer. The homepage leads with the course entry point and a compact unit index. Repeated counters, ornamental flourishes, feature panels, generic section labels, and the header progress count have been removed. The concept-map preview appears on wider screens; its link remains available on phones.
+
+Connected concepts, practice notes, project rubrics, and design references use labeled disclosures. Project requirements, topic suggestions, passages, questions, and correction explanations remain available. Rubrics and practice instructions expand for printing and restore their previous state afterward.
+
+The writing desk shows word count, estimated grade, and long-sentence count first. More statistics and export options are grouped; selection lookup appears when text is selected, and the document selector appears when there are documents to switch between. Extra save messages, repeated headings, and duplicate Locate buttons have been removed. Clicking a quoted review excerpt locates it in the manuscript. Browser checks cover these revised workflows, keyboard access, printing, saved work, and responsive layouts.

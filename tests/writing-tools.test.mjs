@@ -79,7 +79,7 @@ test('thesaurus lookup validates input, uses exact senses before inflections, an
  }finally{globalThis.fetch=originalFetch;}
 });
 test('palette uses only low-chroma ink and paper without gradients',()=>{
- for(const file of ['src/style.css','src/period.css','src/assignments.css','src/newspaper.css','src/writing-tools.css','src/data/framework.js']){
+ for(const file of ['src/style.css','src/period.css','src/assignments.css','src/newspaper.css','src/clarity.css','src/writing-tools.css','src/data/framework.js']){
   const source=read(file);assert.ok(!/(?:linear|radial|conic)-gradient\s*\(/i.test(source));
   for(const [,hex] of source.matchAll(/#([a-f0-9]{6})(?:[a-f0-9]{2})?\b/gi)){const c=[0,2,4].map(i=>parseInt(hex.slice(i,i+2),16));assert.ok(Math.max(...c)-Math.min(...c)<=25,`${file}: #${hex}`);}
  }

@@ -1,0 +1,25 @@
+/* Quieter framing; task controls remain beside the work they affect. */
+.masthead{min-height:112px;padding-block:20px;gap:24px}
+.brand{font-size:54px}.brand-sub{font-size:10px;letter-spacing:1px;margin-top:10px}
+.nav-item{padding:13px 24px}.navigation-band{border-bottom-width:1px}
+.site-footer{border-top:1px solid #b7afa1;padding-block:25px}.site-footer p{margin-right:auto}
+.page-title{padding-bottom:18px;margin-bottom:24px}.page-title h1{font-size:51px}
+.course-opening{grid-template-columns:1.15fr 1fr;gap:62px;padding-bottom:22px}
+.course-title-block{text-align:left;padding:0}.course-title-block h1{font-size:clamp(36px,4vw,53px);line-height:1.15}
+.course-title-block h1 em{font-size:1em}.course-summary{font-size:15px;color:var(--muted);margin:21px 0 28px}
+.course-start{display:flex;flex-direction:column;align-items:flex-start;gap:12px}.course-start>span{font-size:15px;color:var(--muted)}
+.opening-map{border:0;box-shadow:none;background:transparent;padding:0}.opening-map:before,.opening-map:after{display:none}.opening-map .mini-map{max-height:295px}.map-caption{border:0;justify-content:center;padding-top:8px}
+.overview-page .index-section{margin-top:10px}.overview-page .section-heading{margin:15px 0}.overview-page .section-heading h2{font-size:31px}
+.unit-card.compact,.unit-card.compact:nth-child(9){min-height:88px;padding:23px 0;align-items:center;grid-template-columns:64px 1fr 17px;gap:15px}
+.unit-card.compact h3,.unit-card.compact:nth-child(9) h3{font-size:25px}.unit-card.compact .unit-number{font-size:24px}.unit-card.compact:nth-child(9) .unit-card-copy{display:block}
+.unit-card.compact .unit-card-meta{display:block;margin-top:7px}.unit-grid:before{opacity:.55}
+.project-hero,.project-library-card,.topic-suggestions,.manuscript{box-shadow:none}.project-hero{border:0;border-bottom:1px solid #b7afa1;background:transparent;padding:0 0 25px}
+.topic-suggestions{border:0;border-left:2px solid #b7afa1;background:transparent;padding:5px 0 5px 22px}
+.project-library-card{background:transparent;border:1px solid #b7afa1}.project-library-card:hover{box-shadow:none}
+.concept-aside .info-card{background:transparent;border:0;border-top:1px solid #b7afa1;padding:20px 0;box-shadow:none}.related-concepts>summary{cursor:pointer;font-size:21px;line-height:1.4}.related-concepts[open]>summary{margin-bottom:20px}.concept-aside .progress-card{padding-top:20px}.concept-aside .progress-card .button{width:100%;white-space:normal}
+.practice-guidance{margin:5px 0 24px;border-bottom:1px solid #b7afa1;padding-bottom:16px;font-size:15px;line-height:1.65}.practice-guidance>summary,.project-references>summary{cursor:pointer;font-size:16px}.practice-guidance[open]>summary{margin-bottom:15px}.practice-guidance p:last-child{margin-bottom:0}.current-question-heading{font-size:23px}
+.project-references>summary{margin-bottom:10px}.assessment-details{background:transparent;box-shadow:none;border-width:1px}.assessment-details>summary{padding-block:5px}
+@media(max-width:1000px){.masthead{padding-inline:28px;min-height:100px}.brand{font-size:43px}.nav-item{padding-inline:18px}.course-opening{gap:28px}.course-title-block h1{font-size:39px}.page-title h1{font-size:46px}}
+@media(max-width:760px){.masthead{padding:22px;min-height:0;gap:12px}.brand{font-size:36px}.brand-sub{font-size:8px;letter-spacing:.5px}.site-header{border-bottom-width:1px}.nav-item{padding:13px}.page-title h1{font-size:42px}.course-opening{grid-template-columns:1fr;gap:24px}.course-title-block{text-align:center}.course-title-block h1{font-size:42px}.course-summary{margin:16px 0 21px}.course-start{align-items:center}.opening-map{max-width:340px}.opening-map .mini-map{display:none}.unit-card.compact,.unit-card.compact:nth-child(9){min-height:78px;padding:22px 0;grid-template-columns:52px 1fr 17px;gap:11px}.unit-card.compact h3,.unit-card.compact:nth-child(9) h3{font-size:24px}.concept-aside{display:block}.concept-aside .info-card{margin-bottom:12px}.site-footer{gap:18px}}
+@media(max-width:480px){.masthead{padding:20px 17px;gap:7px}.brand{font-size:30px}.brand-sub{font-size:6.5px;letter-spacing:.2px}.course-title-block h1{font-size:36px}.course-title-block h1 em{white-space:normal}.page-title h1{font-size:38px}.unit-card.compact h3,.unit-card.compact:nth-child(9) h3{font-size:23px}.project-hero{padding:0 0 22px}}
+@media(max-width:355px){.brand{font-size:26px}.brand-sub{font-size:6px}.course-title-block h1{font-size:32px}}
