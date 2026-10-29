@@ -67,5 +67,5 @@ test('source URLs and visual constraints remain intact',()=>{
  assert.ok(sources.every(s=>new URL(s.url).protocol==='https:'));
  assert.ok(sources.some(s=>s.publisher==='College Board'));
  assert.ok(sources.some(s=>s.publisher==='Purdue OWL'));
- assert.ok(!fs.readFileSync(new URL('../src/style.css',import.meta.url),'utf8').includes('gradient('));
+ for(const file of ['style.css','period.css'])assert.ok(!fs.readFileSync(new URL(`../src/${file}`,import.meta.url),'utf8').includes('gradient('));
 });

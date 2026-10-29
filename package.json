@@ -10,11 +10,12 @@
     "test": "node --test tests/content.test.mjs",
     "test:browser": "node tests/browser.mjs",
     "export:ontology": "node scripts/export-ontology.mjs",
-    "prebuild": "npm run export:ontology"
+    "prebuild": "npm run export:ontology",
+    "test:ledger": "node tests/ledger.mjs"
   },
   "dependencies": {
-    "@fontsource/dm-sans": "^5.2.0",
-    "@fontsource/grenze": "^5.3.0",
+    "@fontsource/bodoni-moda-sc": "^5.3.0",
+    "@fontsource/old-standard-tt": "^5.3.0",
     "lucide-react": "^0.468.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"

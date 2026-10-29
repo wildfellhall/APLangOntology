@@ -35,7 +35,15 @@ Browser artifacts stay in ignored `test-results/`. Automated accessibility check
 
 ## Build
 
-`npm test` and `npm run build` pass. The build regenerates `public/ontology.json`. Fonts are self-hosted Grenze and DM Sans; license texts are included. Routing uses hashes and assets use relative paths.
+`npm test` and `npm run build` pass. The build regenerates `public/ontology.json`. Fonts are self-hosted Old Standard TT and Bodoni Moda SC; license texts are included. Routing uses hashes and assets use relative paths.
+
+## Period design and argument ledger
+
+The interface uses a centered masthead, small capitals, original SVG printer’s ornaments, double rules, Roman unit numbers, framed concept plates, and ruled writing areas. [Old Standard TT](https://fontsource.org/fonts/old-standard-tt/about) draws on late nineteenth- and early twentieth-century book types; [Bodoni Moda SC](https://fontsource.org/fonts/bodoni-moda-sc/about) supplies display capitals. The README remains minimal.
+
+The optional argument ledger is available in every essay assignment. Its four fields connect a claim to evidence, test an objection or alternative reading, and invite qualification. Prompts adapt to the essay task. Entries persist in the existing local workspace, reopen at the worksheet, and export as text. The ledger is a planning aid, not a prescribed essay structure or automatic scoring tool.
+
+The production browser suite again passed all 243 concept-section routes, standard student workflows, responsive layouts from 320 to 1440 pixels, and automated accessibility checks. `npm run test:ledger` separately checks persistence, task-specific prompts, workspace return links, export, narrow layouts, and accessibility with the ledger expanded. Desktop and mobile screenshots were inspected. No gradients or additional favicons were added.
 
 ## Limits
 
