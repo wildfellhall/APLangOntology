@@ -16,7 +16,8 @@
     "lexicon:build": "node scripts/build-lexicon.mjs",
     "predev": "npm run lexicon:build",
     "pretest": "npm run lexicon:build",
-    "test:writing": "node tests/writing-tools.mjs"
+    "test:writing": "node tests/writing-tools.mjs",
+    "test:library": "node tests/library-browser.mjs"
   },
   "dependencies": {
     "@fontsource/bodoni-moda-sc": "^5.3.0",

@@ -1,0 +1,14 @@
+import {catalog} from './catalog.js';
+import {texts} from './texts.js';
+import {essaySets} from './essays.js';
+import {libraryProjects} from './projects.js';
+import {speechQuestions} from './questions-speeches.js';
+import {legalQuestions} from './questions-legal.js';
+import {philosophyQuestions} from './questions-philosophy.js';
+import {finalizeQuestions} from './schema.js';
+export {packets} from './packets.js';
+export {essayDirections} from './essays.js';
+export const libraryNotice='Original AP-style classroom practice, not released College Board questions or a calibrated exam. Each ten-question set focuses on reading; it does not reproduce the exam’s reading-and-revision balance. Accuracy here is not an AP score prediction.';
+const questionSets={...speechQuestions,...legalQuestions,...philosophyQuestions};
+export const assignments=catalog.map(a=>({...a,text:texts[a.id],essays:essaySets[a.id],project:libraryProjects[a.id],questions:finalizeQuestions(a.id,questionSets[a.id])}));
+export const assignmentById=Object.fromEntries(assignments.map(a=>[a.id,a]));

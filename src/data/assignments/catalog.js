@@ -1,0 +1,14 @@
+// Keep route and draft metadata lightweight; full packets load on demand.
+export const catalog = [
+ {id:'lincoln',title:'Second Inaugural Address',author:'Abraham Lincoln',year:1865,category:'Speech',theme:'Dissent & public memory',focus:'Responsibility, restraint, and reconciliation',concepts:['rhetorical-situation','tone','qualification']},
+ {id:'douglass',title:'What to the Slave Is the Fourth of July?',author:'Frederick Douglass',year:1852,category:'Speech',theme:'Dissent & public memory',focus:'Public celebration and the rhetoric of indictment',concepts:['audience','counterargument','rhetorical-questions']},
+ {id:'anthony',title:'Is It a Crime for a U.S. Citizen to Vote?',author:'Susan B. Anthony',year:1873,category:'Speech',theme:'Rights & authority',focus:'Founding principles, consent, and political exclusion',concepts:['claims','line-reasoning','definition']},
+ {id:'declaration',title:'Declaration of Independence',author:'Second Continental Congress',year:1776,category:'Legal document',theme:'Rights & authority',focus:'Principles, grievances, and the justification of action',concepts:['claims','evidence','line-reasoning']},
+ {id:'bill-rights',title:'Bill of Rights',author:'First U.S. Congress; ratifying states',year:1791,category:'Legal document',theme:'Rights & authority',focus:'Limits, conditions, and the significance of precise language',concepts:['qualification','syntax','definition']},
+ {id:'brown',title:'Brown v. Board of Education',author:'Earl Warren, for the U.S. Supreme Court',year:1954,category:'Legal document',theme:'Education & independent judgment',focus:'Equality beyond measurable facilities',concepts:['evidence','line-reasoning','comparison']},
+ {id:'mill',title:'On Liberty',author:'John Stuart Mill',year:1859,category:'Philosophy',theme:'Education & independent judgment',focus:'Fallibility, disagreement, and the conditions of knowledge',concepts:['counterargument','qualification','line-reasoning']},
+ {id:'thoreau',title:'Civil Disobedience',author:'Henry David Thoreau',year:1849,category:'Philosophy',theme:'Dissent & public memory',focus:'Conscience, expediency, and majority power',concepts:['claims','qualification','analogy-metaphor']},
+ {id:'wollstonecraft',title:'A Vindication of the Rights of Woman',author:'Mary Wollstonecraft',year:1792,category:'Philosophy',theme:'Education & independent judgment',focus:'Education, cultivated dependence, and intellectual agency',concepts:['cause-effect','analogy-metaphor','counterargument']},
+];
+export const catalogById=Object.fromEntries(catalog.map(a=>[a.id,a]));
+export const assignmentDrafts=catalog.flatMap(a=>['analysis','argument','synthesis','project','notes'].map(kind=>({id:`library-${a.id}-${kind}`,label:`${a.title} · ${kind==='analysis'?'Rhetorical analysis':kind[0].toUpperCase()+kind.slice(1)}`,href:`#/assignments/${a.id}/${kind==='notes'?'reading':kind==='project'?'project':`essays/${kind}`}`})));

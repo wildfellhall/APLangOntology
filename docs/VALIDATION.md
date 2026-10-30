@@ -1,6 +1,6 @@
 # Validation
 
-Reviewed October 29, 2026.
+Reviewed October 30, 2026.
 
 ## Content
 
@@ -26,7 +26,7 @@ Original practice is not released College Board material. These focused sets are
 
 ## Checks
 
-`npm test` runs twenty content and writing-tool checks covering the original lessons and graph, legacy answer compatibility, 22-by-10 question coverage, source references, distinct project briefs, scoring totals, complete downloads, portable ontology references, and the prohibition on gradients. Writing checks cover published readability formulas, Unicode ranges, conservative grammar exceptions, actual spelling suggestions, stale edits, WordNet senses, lookup recovery, and the ink-and-paper palette.
+`npm test` runs twenty-four content and writing-tool checks covering the original lessons and graph, legacy answer compatibility, 22-by-10 question coverage, source references, distinct project briefs, scoring totals, complete downloads, portable ontology references, and the prohibition on gradients. Writing checks cover published readability formulas, Unicode ranges, conservative grammar exceptions, actual spelling suggestions, stale edits, WordNet senses, lookup recovery, and the ink-and-paper palette.
 
 The production build is tested on `http://127.0.0.1:4175/` with Playwright and axe. Port 4173 belongs to another application and is left untouched.
 
@@ -59,8 +59,19 @@ The thesaurus uses Princeton WordNet 3.1. Its 110,543 entries retain senses with
 
 ## Interface simplification
 
-The header has six primary destinations, with home on the wordmark and sources in the footer. The homepage leads with the course entry point and a compact unit index. Repeated counters, ornamental flourishes, feature panels, generic section labels, and the header progress count have been removed. The concept-map preview appears on wider screens; its link remains available on phones.
+The header has seven primary destinations, with home on the wordmark and sources in the footer. The homepage leads with the course entry point and a compact unit index. Repeated counters, ornamental flourishes, feature panels, generic section labels, and the header progress count have been removed. The concept-map preview appears on wider screens; its link remains available on phones.
 
 Connected concepts, practice notes, project rubrics, and design references use labeled disclosures. Project requirements, topic suggestions, passages, questions, and correction explanations remain available. Rubrics and practice instructions expand for printing and restore their previous state afterward.
 
 The writing desk shows word count, estimated grade, and long-sentence count first. More statistics and export options are grouped; selection lookup appears when text is selected, and the document selector appears when there are documents to switch between. Extra save messages, repeated headings, and duplicate Locate buttons have been removed. Clicking a quoted review excerpt locates it in the manuscript. Browser checks cover these revised workflows, keyboard access, printing, saved work, and responsive layouts.
+
+
+## Historical Assignment Library
+
+The new Assignments destination opens nine source studies: three speeches, three legal/founding documents, and three philosophy excerpts. Search matches titles, authors, years, and topics. Filters cover category and theme; sorting covers date, title, and author. Detail pages separate Reading, Essays, Questions, and Project. Related concepts connect the studies to the course ontology.
+
+These add 90 original reading MCQs, 27 essay prompts, three shared six-source synthesis packets, and nine distinct projects with 100-point rubrics. They supplement the existing 220-question skill bank and 81 concept projects. The existing ontology export remains the concept dataset; complete historical assignments are downloadable from their study pages. Sources, selection notes, source limitations, and design decisions are documented in [the source review](research/assignment-library.md).
+
+Each study has five independent saved draft keys: notes, rhetorical analysis, argument, synthesis, and project. Drafts appear in My workspace and can be reviewed directly in the writing desk. New versioned question IDs do not collide with existing answers. Complete assignment downloads include selected primary texts, every essay prompt, six synthesis sources, table/diagram equivalents, all questions, project requirements, rubric levels, and a separated answer key.
+
+`npm run test:library` covers all nine studies, all 27 essay variants, all 90 rendered questions, filters and sorting, empty results, primary-source links, feedback and reload persistence, keyboard question navigation, print expansion/restoration, separate essay drafts, workspace/writing-tool round trips, global search, and downloads. It checks 320, 390, 768, and 1440px layouts and eight accessibility states, with zero automated violations. Desktop and mobile screenshots were inspected. The new content loads in a separate application chunk; existing bundle-size advice remains.

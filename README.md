@@ -1,8 +1,8 @@
 # Commonplace
 
-AP English Language lessons, practice, projects, and writing tools.
+AP English Language lessons, assignments, projects, and writing tools.
 
-81 concepts. 9 units.
+81 concepts. 9 units. 9 historical text studies.
 
 ```sh
 npm install
