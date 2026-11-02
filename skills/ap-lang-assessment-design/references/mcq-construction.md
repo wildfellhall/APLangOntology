@@ -23,6 +23,7 @@ Reading prompts can ask about the work of a detail, an inference, the relationsh
 - Audit lexical clues: a copied keyword, unusually careful qualification, conspicuously longer key, or three implausible distractors can bypass comprehension. Length statistics identify candidates for review; they cannot assess item quality.
 - Keep option order stable once responses are saved. Rotate or permute choices deterministically before publication; version materially changed items so an old answer is not silently reinterpreted.
 - Count unique questions separately from assignments. If concepts share a skill set, say so and preserve one response per item across those pages. A quantity requirement must be checked against actual IDs and skill mappings, not repeated display instances.
+- When the requirement is ten exclusive items per concept, assign every canonical ID to one concept and author the missing items. Preserve original questions as alternate skill-review views without counting them twice. Check concept ownership, unique stems, figure availability, sentence references, and complete explanations in both the rendered page and downloaded assignment.
 - Match coverage to the requested unit of practice. Distinguish a narrow editorial concept from its broader official CED skill. A shared 7.A set does not imply ten separate questions specifically about every named device.
 - Use learner attempts and expert review to refine ambiguity and difficulty. A passing schema test does not validate AP equivalence, discrimination, or instructional effectiveness.
 

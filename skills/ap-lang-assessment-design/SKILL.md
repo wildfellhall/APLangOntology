@@ -5,7 +5,7 @@ description: Design AP English Language and Composition practice, concept librar
 
 # AP Language assessment design
 
-Create original materials aligned to the actual task being practiced, not a device-identification worksheet labeled as an exam. Read [references/patterns.md](references/patterns.md) for prompt patterns, project design, and the verified source register. Recheck the official CED and current exam page before asserting current exam specifications. The reference review date is October 29, 2026. For substantial question banks, read [references/mcq-construction.md](references/mcq-construction.md). For distinctive project briefs and rubrics, read [references/project-studio.md](references/project-studio.md).
+Create original materials aligned to the actual task being practiced, not a device-identification worksheet labeled as an exam. Read [references/patterns.md](references/patterns.md) for prompt patterns, project design, and the verified source register. Recheck the official CED and current exam page before asserting current exam specifications. The official exam structure was rechecked November 1, 2026. For substantial question banks, read [references/mcq-construction.md](references/mcq-construction.md). For distinctive project briefs and rubrics, read [references/project-studio.md](references/project-studio.md).
 
 ## Design decisions
 
@@ -16,6 +16,7 @@ Create original materials aligned to the actual task being practiced, not a devi
 - For synthesis, supply the entire packet: six usable sources, multiple perspectives, source labels and context, and quantitative/visual material. Require an original argument drawing on at least three sources. Original simulated sources are acceptable for teaching if labeled prominently; never present invented people, data, or publication details as real research.
 - For argument, frame an open question with a genuinely contestable position. Demand specific evidence and explanations. Do not invent a famous person's quotation to make the prompt look official. A short thesis need not be nuanced to satisfy the thesis row; do not award sophistication for an ornamental concession.
 - Use the official 0–1 / 0–4 / 0–1 essay dimensions with task-specific rules. Link full scoring guidelines; a short teaching guide must not pretend to reproduce all decision rules. Do not equate a classroom percentage, project grade, or six-point essay score with the five-point AP exam result.
+- When ten questions are requested per concept, give every concept ten exclusive canonical items. A skill-review view may reuse those IDs, but it does not add to the unique count. Audit normalized stems and substantive reasoning tasks, not just IDs. Preserve existing option order and response semantics when expanding a live bank.
 - Label short isolated items as focused practice. Exam-style structure is not evidence of calibrated exam difficulty. Distinguish extended original essays, paragraph scaffolds, and genuine exam simulations.
 
 ## Projects

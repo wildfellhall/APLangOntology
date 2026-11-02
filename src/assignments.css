@@ -68,3 +68,6 @@
   .question-card,.project-rubric-row { break-inside: avoid; }
   .question-card button { display: none; }
 }
+
+.mcq-figure{margin:24px 0 0}.mcq-figure img{display:block;width:100%;height:auto;border:1px solid #b7afa1}.mcq-figure figcaption{margin-top:10px;font-size:13px;line-height:1.6;color:#58554e}.skill-directory>p{font-size:14px;line-height:1.6;margin:14px 0}.skill-controls{flex-wrap:wrap}
+.mcq-figure-scroll{overflow-x:auto;overscroll-behavior-x:contain}.mcq-figure-scroll img{min-width:760px}.mcq-figure-scroll:focus-visible{outline:2px solid #514940;outline-offset:3px}.figure-scroll-hint{display:none}@media(max-width:850px){.figure-scroll-hint{display:block;margin-top:5px}}

@@ -1,7 +1,5 @@
-import u1 from './unit1.js'; import u2 from './unit2.js'; import u3 from './unit3.js';
-import u4 from './unit4.js'; import u5 from './unit5.js'; import u6 from './unit6.js';
-import u7 from './unit7.js'; import u8 from './unit8.js'; import u9 from './unit9.js';
-import extensions from './extensions.js';
+import {rawConcepts} from './nodes.js';
+import {questionsForConcept} from './mcq/index.js';
 import {projectByConcept} from './projects/index.js';
 export * from './mcq/index.js';
 export {rubricScoring} from './projects/index.js';
@@ -9,16 +7,15 @@ export * from './framework.js';
 export * from './passages.js';
 
 const externalByDomain = {situation:['appeals','visual'],evidence:['toulmin','synthesis'],reasoning:['organization','toulmin','fallacies'],style:['appeals','visual']};
-const originalNodes = [...u1,...u2,...u3,...u4,...u5,...u6,...u7,...u8,...u9];
 // Keep existing answer orders stable when concepts are inserted into the study path.
-const assessmentOrder = Object.fromEntries([...originalNodes,...extensions].map((node,index)=>[node.id,index]));
+const assessmentOrder = Object.fromEntries(rawConcepts.map((node,index)=>[node.id,index]));
 const unitCounts = {};
 const additionalSources = {
   'kairos':['kairos'], 'genre-conventions':['genre'], 'stasis':['stasis'],
   'paraphrase-summary':['paraphrase'], 'ethical-representation':['paraphrase'],
   'primary-secondary':['source-types'],
 };
-export const concepts = [...originalNodes,...extensions].sort((a,b)=>a.unit-b.unit).map((node,index)=>{
+export const concepts = [...rawConcepts].sort((a,b)=>a.unit-b.unit).map((node,index)=>{
   const practice = {...node.practice};
   for (const [j,kind] of ['read','write'].entries()) {
     const question=node.practice[kind], shift=(assessmentOrder[node.id]*3+j)%4;
@@ -26,7 +23,7 @@ export const concepts = [...originalNodes,...extensions].sort((a,b)=>a.unit-b.un
     practice[kind]={...question,options:order.map(i=>question.options[i]),rationales:order.map(i=>question.rationales[i]),correct:order.indexOf(0),kind:kind==='read'?'Reading':'Writing & revision',id:`${node.id}-${kind}`};
   }
   unitCounts[node.unit]=(unitCounts[node.unit]||0)+1;
-  return {...node,project:projectByConcept[node.id],practice,skills:[...new Set([...node.skills,practice.read.skill,practice.write.skill])].sort(),index,indexInUnit:unitCounts[node.unit],sources:[...new Set(['ced',...externalByDomain[node.domain],...(additionalSources[node.id]||[])])]};
+  return {...node,project:projectByConcept[node.id],practice,skills:[...new Set([...node.skills,practice.read.skill,practice.write.skill,...questionsForConcept(node).map(q=>q.skill)])].sort(),index,indexInUnit:unitCounts[node.unit],sources:[...new Set(['ced',...externalByDomain[node.domain],...(additionalSources[node.id]||[])])]};
 });
 export const conceptById=Object.fromEntries(concepts.map(n=>[n.id,n]));
 const transfers=[

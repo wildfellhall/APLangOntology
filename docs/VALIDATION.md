@@ -1,13 +1,13 @@
 # Validation
 
-Reviewed October 30, 2026.
+Reviewed November 1, 2026.
 
 ## Content
 
 - 81 concepts across nine units, connected by 198 typed relationships.
-- 220 active original MCQs in 22 official-skill sets: 10 distinct questions per skill.
-- Concept pages link to their associated sets, providing 20–40 questions per concept. Sets and answers are shared; these are not separate banks of newly authored questions for every concept or every named device.
-- Five original reading passages and five numbered revision drafts support the MCQ bank. Each set uses five contexts. All simulated circumstances and figures are labeled.
+- 810 active original MCQs: ten exclusive questions for each of 81 concepts. All 22 official skill codes remain covered.
+- The previous 220 questions are each assigned to one concept. The 22 official-skill review sets retain those same canonical IDs, wording, option order, and explanations. Their alternate display does not add to the 810-question count.
+- Twenty-eight original source texts support the bank: the original ten plus eighteen new sustained passages and drafts. Five additional numbered or paragraph-based views reuse a source for a different reading/revision task; they are not counted as new texts. Two original diagrams accompany visual questions and have text equivalents in downloads. All simulated circumstances and figures are labeled.
 - 81 essay assignments: 32 rhetorical analysis, 40 argument, and nine synthesis. Five extended analysis passages and one six-source synthesis packet are reused across those assignments.
 - 81 rewritten projects with distinct inquiries, audiences, topic suggestions, detailed deliverables, visual reasoning, self-analysis, testing, revision, and reflection.
 - Every project has a 100-point analytic rubric. Its central concept and visual criterion are specific to the assignment; evidence, self-analysis, and revision criteria supply common expectations. Four scored performance levels and a missing-work level are explicit.
@@ -18,7 +18,7 @@ The earlier 162 short MCQs remain in the source data and ontology as legacy fiel
 
 ## Assessment design
 
-The College Board CED's public reading and revision samples and current exam overview were checked. Reading questions now use sustained passage context; revision questions specify a purpose and operate on numbered drafts. Proposed revisions are independent of one another. Every option has an explanation. Reference checks corrected sentence-number drift; a length-cue review led to revisions of 27 items and more plausible alternatives.
+The College Board CED's public reading and revision samples and current exam overview were checked. Reading questions now use sustained passage context; revision questions specify a purpose and operate on numbered drafts. Proposed revisions are independent of one another. Every option has an explanation. Reference checks corrected sentence-number drift; the latest length-cue review tightened 110 keyed choices, and 75 weak distractors were replaced with alternatives tied more closely to the passage or revision goal.
 
 The reusable `ap-lang-assessment-design` skill now includes references for passage construction, distractor review, source-dependent reasoning, versioned answer storage, themed project design, and analytic rubrics. Both the repository copy and installed copy were updated and validated.
 
@@ -26,24 +26,24 @@ Original practice is not released College Board material. These focused sets are
 
 ## Checks
 
-`npm test` runs twenty-four content and writing-tool checks covering the original lessons and graph, legacy answer compatibility, 22-by-10 question coverage, source references, distinct project briefs, scoring totals, complete downloads, portable ontology references, and the prohibition on gradients. Writing checks cover published readability formulas, Unicode ranges, conservative grammar exceptions, actual spelling suggestions, stale edits, WordNet senses, lookup recovery, and the ink-and-paper palette.
+`npm test` runs twenty-five content and writing-tool checks covering the original lessons and graph, legacy answer compatibility, 81-by-10 exclusive question coverage, the original 22 skill reviews, normalized-stem uniqueness, and compatibility hashes for both earlier question banks, source references, distinct project briefs, scoring totals, complete downloads, portable ontology references, and the prohibition on gradients. Writing checks cover published readability formulas, Unicode ranges, conservative grammar exceptions, actual spelling suggestions, stale edits, WordNet senses, lookup recovery, and the ink-and-paper palette.
 
 The production build is tested on `http://127.0.0.1:4175/` with Playwright and axe. Port 4173 belongs to another application and is left untouched.
 
 - `npm run test:browser`: all 243 concept-section routes, student workflows, responsive layouts, navigation, exports, and ten accessibility states.
-- `npm run test:assignments`: all 220 active MCQs rendered through 22 sets; question navigation; keyboard input; saved answers across concepts and direct skill pages; complete-set print behavior; downloads; rubric levels; 320–1440px layouts; expanded practice and project accessibility.
+- `npm run test:assignments`: all 810 active MCQs rendered through 81 exclusive concept sets and the 22 preserved skill reviews; question navigation; keyboard input; old and new saved-answer persistence; complete-set print behavior; diagrams and text-equivalent downloads; rubric levels; 320–1440px layouts; expanded practice and project accessibility.
 - `npm run test:writing`: local worker analysis, explicit corrections and undo/redo, annotated text, personal dictionary, selected-word substitution, saved-assignment round trips, exports, missing assets and retry, oversized drafts, no external requests, responsive layouts, and accessibility.
 - `npm run test:ledger`: planning-ledger persistence, task-specific prompts, workspace links, export, narrow layouts, and accessibility.
 
 Artifacts and screenshots remain in ignored `test-results/`. Automated accessibility checks are not a complete assistive-technology audit.
 
-`npm run build` regenerates the version 2 ontology, including all active questions, their complete source texts, project rubrics, and essay packets. The content-rich JavaScript bundle triggers Vite's size advisory; the build succeeds.
+`npm run build` regenerates the version 3 ontology, including all active questions, their complete source texts, project rubrics, and essay packets. The content-rich JavaScript bundle triggers Vite's size advisory; the build succeeds.
 
 ## Interface and storage
 
 The nineteenth-century typography, centered masthead, fine rules, Roman unit numbers, and ink-and-paper palette carry the newspaper aesthetic. The former colored pastel fills have been removed across the interface, graph, exported ontology, and favicon. Fonts are self-hosted [Old Standard TT](https://fontsource.org/fonts/old-standard-tt/about) and [Bodoni Moda SC](https://fontsource.org/fonts/bodoni-moda-sc/about), with licenses included. No gradients or additional favicons were added. The README remains minimal.
 
-The practice library provides direct access to all 22 skill sets. Students can answer one item at a time or show a complete set, with a visible passage, progress, and answer explanations. The optional argument ledger remains available for every essay; it is a planning aid, not a required essay structure.
+The practice library provides a searchable, unit-filtered index of the 81 concept sets and optional reviews by all 22 official skills. Students can answer one item at a time or show a complete set, with a visible passage, progress, and answer explanations. The optional argument ledger remains available for every essay; it is a planning aid, not a required essay structure.
 
 Student work stays in browser storage, separately for each origin. There is no account synchronization, automatic essay grading, or AP-score prediction. GitHub operations use the GitHub CLI and git.
 
@@ -70,7 +70,7 @@ The writing desk shows word count, estimated grade, and long-sentence count firs
 
 The new Assignments destination opens nine source studies: three speeches, three legal/founding documents, and three philosophy excerpts. Search matches titles, authors, years, and topics. Filters cover category and theme; sorting covers date, title, and author. Detail pages separate Reading, Essays, Questions, and Project. Related concepts connect the studies to the course ontology.
 
-These add 90 original reading MCQs, 27 essay prompts, three shared six-source synthesis packets, and nine distinct projects with 100-point rubrics. They supplement the existing 220-question skill bank and 81 concept projects. The existing ontology export remains the concept dataset; complete historical assignments are downloadable from their study pages. Sources, selection notes, source limitations, and design decisions are documented in [the source review](research/assignment-library.md).
+These add 90 original reading MCQs, 27 essay prompts, three shared six-source synthesis packets, and nine distinct projects with 100-point rubrics. They supplement the 810-question concept bank and 81 concept projects. The existing ontology export remains the concept dataset; complete historical assignments are downloadable from their study pages. Sources, selection notes, source limitations, and design decisions are documented in [the source review](research/assignment-library.md).
 
 Each study has five independent saved draft keys: notes, rhetorical analysis, argument, synthesis, and project. Drafts appear in My workspace and can be reviewed directly in the writing desk. New versioned question IDs do not collide with existing answers. Complete assignment downloads include selected primary texts, every essay prompt, six synthesis sources, table/diagram equivalents, all questions, project requirements, rubric levels, and a separated answer key.
 

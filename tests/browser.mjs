@@ -9,7 +9,7 @@ const context=await browser.newContext({viewport:{width:1440,height:1000},reduce
 const page=await context.newPage();
 const errors=[];const a11y=[];
 page.on('pageerror',e=>errors.push(e.message));
-const base=process.env.TEST_URL||'http://127.0.0.1:5173/';
+const base=process.env.TEST_URL||'http://127.0.0.1:4175/';
 async function navigate(path=''){await page.goto(base+path);await page.locator('h1').waitFor();await page.evaluate(()=>document.fonts.ready);}
 async function screenshot(name){await page.evaluate(()=>window.scrollTo(0,0));await page.screenshot({path:`test-results/${name}.png`,fullPage:true,animations:'disabled'});}
 async function axe(label){const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();a11y.push({label,violations:result.violations.map(v=>({id:v.id,impact:v.impact,description:v.description,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))});}

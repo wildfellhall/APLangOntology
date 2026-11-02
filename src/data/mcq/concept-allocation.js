@@ -1,0 +1,26 @@
+// Every existing canonical item belongs to exactly one concept practice set.
+// Skill review pages retain the same IDs and option order as alternate views.
+export const existingConceptAllocation={
+ '1.A':['rhetorical-situation','introductions','exigence-context','audience','speaker-persona','purpose-message','kairos','speaker-persona','rhetorical-situation','purpose-message'],
+ '1.B':['audience-values','ethos','pathos','ethos','audience-values','ethical-representation','audience-values','audience-values','audience-adaptation','audience-adaptation'],
+ '2.A':['introductions','conclusions','introductions','conclusions','exigence-context','conclusions','introductions','conclusions','introductions','conclusions'],
+ '2.B':['audience','audience-adaptation','genre-conventions','audience-values','audience-adaptation','audience','diction','audience-adaptation','ethical-representation','audience'],
+ '3.A':['evidence','claims','quantitative-evidence','fact-value-policy','primary-secondary','relevance-sufficiency','claims','evidence','relevance-sufficiency','claims'],
+ '3.B':['thesis','analytical-thesis','thesis','analytical-thesis','thesis','analytical-thesis','thesis','analytical-thesis','thesis','analytical-thesis'],
+ '3.C':['qualification','qualification','limitations','counterargument','ethical-representation','ethical-representation','complexity','limitations','quantitative-evidence','modality-hedging'],
+ '4.A':['relevance-sufficiency','commentary','quantitative-evidence','evidence','quantitative-evidence','synthesis','evidence','visual-rhetoric','source-conversation','relevance-sufficiency'],
+ '4.B':['thesis','argument','fact-value-policy','argument','thesis','fact-value-policy','thesis','analytical-thesis','synthesis','complexity'],
+ '4.C':['qualification','concession-rebuttal','limitations','concession-rebuttal','qualification','limitations','analogy-metaphor','counterargument','limitations','credibility'],
+ '5.A':['warrants','line-reasoning','line-reasoning','problem-solution','enthymeme','line-reasoning','induction-deduction','stasis','warrants','reflection'],
+ '5.B':['coherence','organization','organization','rhetorical-shifts','paragraph','cohesion-reference','organization','line-reasoning','coherence','organization'],
+ '5.C':['narrative-description','comparison','comparison','definition','exemplification','primary-secondary','analogy-metaphor','exemplification','cause-effect','classification'],
+ '6.A':['commentary','definition','commentary','cause-effect','source-conversation','line-reasoning','limitations','revision','source-conversation','problem-solution'],
+ '6.B':['revision','coherence','transitions','cohesion-reference','transitions','coherence','transitions','organization','transitions','coherence'],
+ '6.C':['exemplification','comparison','genre-conventions','comparison','exemplification','classification','exemplification','transfer','definition','classification'],
+ '7.A':['connotation','antithesis','repetition','connotation','analogy-metaphor','antithesis','tone','repetition','antithesis','tone'],
+ '7.B':['parallelism','syntax','modality-hedging','cumulative-periodic','modality-hedging','parallelism','cumulative-periodic','antithesis','modality-hedging','emphasis'],
+ '7.C':['punctuation','sentence-boundaries','punctuation','cohesion-reference','punctuation','cohesion-reference','diction','sentence-boundaries','cohesion-reference','punctuation'],
+ '8.A':['diction','tone','antithesis','modality-hedging','style-voice','antithesis','analogy-metaphor','diction','style-voice','paraphrase-summary'],
+ '8.B':['sentence-variety','emphasis','emphasis','modality-hedging','parallelism','emphasis','parallelism','syntax','integrating-sources','cumulative-periodic'],
+ '8.C':['cohesion-reference','sentence-boundaries','punctuation','punctuation','cohesion-reference','punctuation','sentence-boundaries','cohesion-reference','sentence-boundaries','cohesion-reference'],
+};

@@ -6,7 +6,7 @@ await mkdir('test-results',{recursive:true});
 const browser=await chromium.launch();
 const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
 const page=await context.newPage();
-const base=process.env.TEST_URL||'http://127.0.0.1:5173/';
+const base=process.env.TEST_URL||'http://127.0.0.1:4175/';
 const reports=[];
 const entries=[
  ['Interpretive claim','Chen frames access as a responsibility the council can meet through a limited trial.'],
